@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MMY.StickyNote.UI.exe" size="160768">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MMY.StickyNote.UI.exe" size="161280">
       <assemblyIdentity name="MMY.StickyNote.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>RLj0cHYnQDKidtkddDRlrjViK7j+VaY4Dv7Yt3AtXJw=</dsig:DigestValue>
+        <dsig:DigestValue>frfhlcyOs1ztJRaKGbSsOj5Ds8/SuctzCPWI5n0f4mc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

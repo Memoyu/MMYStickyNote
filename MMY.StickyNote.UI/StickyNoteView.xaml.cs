@@ -105,7 +105,8 @@ namespace MMY.StickyNote.UI
 
             this.LocationChanged += StickyNoteView_PropertyChanged;//窗口位置发生调用数据保存事件
             this.SizeChanged += StickyNoteView_SizeChanged;//窗口大小改变事件
-            this.AddStickyNote.Click += AddStickyNote_Click;//
+            this.AddStickyNote.Click += AddStickyNote_Click;//添加便签按钮事件
+            this.editTitle.PreviewKeyDown += EditTitle_PreviewKeyDown;
             this.EditCompleted.Click += EditCompleted_Click;//点击完成编辑按钮
             this.ContentTextBox.TextChanged += StickyNoteView_PropertyChanged;//文本改变调用保存事件
             this.HideStickyNote.Click += HideStickyNote_Click;//隐藏便签
@@ -116,6 +117,8 @@ namespace MMY.StickyNote.UI
 
 
         }
+
+    
 
         public StickyNoteView(int viewId, ViewSettingData viewSettingData = null) :this()
         {
@@ -346,7 +349,16 @@ namespace MMY.StickyNote.UI
         {
             Window.NewNote_Click(null, EventArgs.Empty);//调用App中的添加新便签事件
         }
-
+        /// <summary>
+        /// 标题编辑栏键盘按下事件
+        /// </summary>
+        private void EditTitle_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                EditCompleted_Click(null, new RoutedEventArgs());
+            }
+        }
         /// <summary>
         /// 完成编辑事件
         /// </summary>
