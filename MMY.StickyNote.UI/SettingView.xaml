@@ -1,0 +1,66 @@
+﻿<Window x:Class="MMY.StickyNote.UI.SettingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MMY.StickyNote.UI"
+        mc:Ignorable="d"
+        Name="stickyNoteSettingProp"
+        Title="Setting" BorderThickness ="0" ResizeMode="NoResize" Height="487" Width="300" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <GroupBox Header="风格" Height="175">
+            <StackPanel >
+                <DockPanel Margin="5,5" Height="25">
+                    <Label  Content="预置风格：" Foreground="Gray" />
+                    <ComboBox Name="StyleComboBox"></ComboBox>
+                </DockPanel>
+                <DockPanel Margin="5,5"  Height="65">
+                    <Button Name="FontSizeShow"  Content="{Binding ElementName=stickyNoteSettingProp, Path=fontFamily}" FontFamily="{Binding ElementName=stickyNoteSettingProp, Path=fontFamily}" FontSize="{Binding ElementName=stickyNoteSettingProp, Path=fontSize}" Background="White" BorderThickness ="0"></Button>
+                </DockPanel>
+                <DockPanel Margin="5,5" Height="25">
+                    <Label Content="字体大小：" Foreground="Gray" />
+                    <TextBox Name="FontSizeValue" Text="{Binding ElementName=stickyNoteSettingProp, Path=fontSize}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="主题" Height="130">
+            <StackPanel >
+                <DockPanel Margin="5,5" Height="25">
+                    <Label  Content="预置主题：" Foreground="Gray" />
+                    <ComboBox Name="ThemeComboBox"></ComboBox>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Margin="4,4"  Height="auto">
+                    <DockPanel Margin="6">
+                        <Button Name="TopColorShow" BorderThickness ="0" Background="{Binding ElementName=stickyNoteSettingProp, Path=topBackground}" DockPanel.Dock="Top" Width="75" Height="40"></Button>
+                        <Label HorizontalContentAlignment="Center" Foreground="Gray" Content="顶栏颜色"/>
+                    </DockPanel >
+                    <DockPanel Margin="6">
+                        <Button Name="BackgroundColorShow" BorderThickness ="0" Background="{Binding ElementName=stickyNoteSettingProp, Path=backBackground}" DockPanel.Dock="Top" Width="75" Height="40"></Button>
+                        <Label HorizontalContentAlignment="Center" Foreground="Gray" Content="背景颜色"/>
+                    </DockPanel>
+                    <DockPanel Margin="6">
+                        <Button Name="FontColorShow" BorderThickness ="0" Background="{Binding ElementName=stickyNoteSettingProp, Path=fontBackground}" DockPanel.Dock="Top" Width="75" Height="40"></Button>
+                        <Label HorizontalContentAlignment="Center" Foreground="Gray" Content="字体颜色"/>
+                    </DockPanel>
+                    
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header=" 透明度" Height="90">
+            <StackPanel>
+                <DockPanel Margin="5,5">
+                    <Slider Name="OpacitySlider" ></Slider>
+                </DockPanel>
+                <DockPanel Margin="5,5">
+                    <Label Foreground="Gray" Content="透明值："/>
+                    <TextBox Name="OpacityValue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </DockPanel>
+            </StackPanel>
+            
+        </GroupBox>
+        <DockPanel Margin="0,10,5,0" Height="35" HorizontalAlignment="Center" LastChildFill="False">
+            <Button Content="确定" Name="ConfirmButton"  Width="120" BorderThickness="0">
+            </Button>
+        </DockPanel>
+    </StackPanel>
+</Window>

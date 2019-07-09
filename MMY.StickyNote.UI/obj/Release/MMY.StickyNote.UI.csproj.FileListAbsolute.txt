@@ -1,0 +1,15 @@
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Release\MMY.StickyNote.UI.exe.config
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Release\MMY.StickyNote.UI.exe
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Release\MMY.StickyNote.UI.pdb
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.csprojAssemblyReference.cache
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\StickyNoteView.g.cs
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\App.g.cs
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI_MarkupCompile.cache
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI_MarkupCompile.lref
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\StickyNoteView.baml
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.g.resources
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.Properties.Resources.resources
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.csproj.GenerateResource.cache
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.csproj.CoreCompileInputs.cache
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.exe
+D:\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Release\MMY.StickyNote.UI.pdb

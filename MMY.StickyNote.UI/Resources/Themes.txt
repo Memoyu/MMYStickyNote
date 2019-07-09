@@ -1,0 +1,26 @@
+[
+	[
+		"用户", 
+		"#FFFFFF", "#FFAEB9", "#FFAEB9"
+	], 
+	[
+		"默认", 
+		"#FFFFFF", "#FFAEB9", "#FFAEB9"
+	], 
+	[
+		"蓝色", 
+		"#FFFFFF", "#5CACEE", "#5CACEE"
+	], 
+	[
+		"绿色", 
+		"#FFFFFF", "#7CCD7C", "#7CCD7C"
+	],  
+	[
+		"紫色", 
+		"#FFFFFF", "#7A378B", "#7A378B"
+	], 
+	[
+		"黄色", 
+		"#FFFFFF", "#EEE685", "#EEE685"
+	]
+]
