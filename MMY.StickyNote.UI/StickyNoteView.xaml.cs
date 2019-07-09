@@ -122,7 +122,7 @@ namespace MMY.StickyNote.UI
             ViewId = viewId;//赋值全局Id
             CustomTheme = new Theme();//创建主题
             CustomStyle = new Style();//创建样式
-
+            
             weatherInfo = new WeatherInfo();
             weatherInfo.GetLocationEvent(GetAddreaaCode);
 
