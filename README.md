@@ -15,4 +15,6 @@ __待做功能__
    * 添加定时提醒功能  
 	
 有志同道合的同学可以一起努力，教程等都可以共享[这是我的简书](https://www.jianshu.com/u/7dc0c12a3075)  
+
+![效果](https://github.com/Memoyu/MMYStickyNote/blob/master/StickyNoteImage/%E6%95%88%E6%9E%9C.gif)
 	
