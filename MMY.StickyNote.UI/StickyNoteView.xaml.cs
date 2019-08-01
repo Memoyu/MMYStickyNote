@@ -125,7 +125,6 @@ namespace MMY.StickyNote.UI
             ViewId = viewId;//赋值全局Id
             CustomTheme = new Theme();//创建主题
             CustomStyle = new Style();//创建样式
-            
             weatherInfo = new WeatherInfo();
             weatherInfo.GetLocationEvent(GetAddreaaCode);
 
@@ -142,15 +141,13 @@ namespace MMY.StickyNote.UI
             //根据获取到的省市获取本地相应的天气编码
             string cityCode = weatherInfo.GetCityCode(address);
             //获取天气信息
-            WeatherInfoData weatherInfoData = weatherInfo.GetWeatherData(cityCode);
-            string weather = weatherInfoData.city + "  -  " + weatherInfoData.weather + "  -  " + weatherInfoData.temp1 + "~" + weatherInfoData.temp2;
+            string weather = weatherInfo.RequestWeatherWebAnalysisData(cityCode);
             Console.WriteLine(weather);
             //这里开始赋值窗口天气
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 this.contentWeather = weather;
             }));
-            
         }
 
 

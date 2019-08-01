@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MMY.StickyNote.UI
 {
-    public class GetWeatherCodeData
+    public class WeatherCodeData
     {
         public List<CityCode> 城市代码 { get; set; }
     }

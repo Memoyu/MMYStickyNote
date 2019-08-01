@@ -54,3 +54,10 @@ D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Debug\MMY.St
 D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI.exe.manifest
 D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI.application
 D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI.csproj.CopyComplete
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Core.dll
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Html.dll
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Html.Parser.dll
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Html.Parser.Regulars.dll
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Core.xml
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Html.xml
+D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\bin\Debug\Ivony.Html.Parser.xml

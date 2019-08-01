@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 namespace MMY.StickyNote.UI
 {
     
-    public class GetWheatherLocalData
-    {
-        public WeatherInfoData weatherinfo { get; set; }
-
-    }
-    public class WeatherInfoData
+    public class WeatherLocalData
     {
         //"city": "柳州",
         //"cityid": "101300301",
@@ -24,12 +19,8 @@ namespace MMY.StickyNote.UI
         //"ptime": "18:00"
 
         public string city { get; set; }
-        public string cityid { get; set; }
-        public string temp1 { get; set; }
-        public string temp2 { get; set; }
+        public string temp { get; set; }
         public string weather { get; set; }
-        public string img1 { get; set; }
-        public string img2 { get; set; }
-        public string ptime { get; set; }
+ 
     }
 }

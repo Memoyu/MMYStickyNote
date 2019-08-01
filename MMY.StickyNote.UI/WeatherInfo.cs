@@ -1,25 +1,23 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Device.Location;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using Ivony.Html;
+using Ivony.Html.Parser;
+using MMY.StickyNote.UI.Common;
 
 namespace MMY.StickyNote.UI
 {
     public class WeatherInfo
     {
-       
-         GeoCoordinateWatcher watcher;
-         string _cityCode;
+        GeoCoordinateWatcher watcher;
+        string _cityCode;
 
         Action<AddressComponent> _GetAddressCode;
-         string _ak = "elxrPCAh6eQyyBwqk62NGpKMxhTh1az1"; 
+        string _ak = "elxrPCAh6eQyyBwqk62NGpKMxhTh1az1";
         public void GetLocationEvent(Action<AddressComponent> GetAddressCode)
         {
             _GetAddressCode = GetAddressCode;
@@ -29,20 +27,20 @@ namespace MMY.StickyNote.UI
             bool started = watcher.TryStart(false, TimeSpan.FromMilliseconds(2000));
             if (!started)
             {
-                MessageBox.Show("GeoCoordinateWatcher 开启超时！","提示");
+                MessageBox.Show("GeoCoordinateWatcher 开启超时！", "提示");
             }
         }
 
         private void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
 
-            AddressComponent address = GetGeocoderForPositionByBaidu(e.Position.Location.Latitude , e.Position.Location.Longitude);
+            AddressComponent address = GetGeocoderForPositionByBaidu(e.Position.Location.Latitude, e.Position.Location.Longitude);
             //使用委托的方式回传地址信息回去，再执行获取天气信息
             _GetAddressCode(address);
-            
+
         }
 
-        private AddressComponent GetGeocoderForPositionByBaidu(double latitude , double longitude)
+        private AddressComponent GetGeocoderForPositionByBaidu(double latitude, double longitude)
         {
             Console.WriteLine("Latitude: {0}, Longitude {1}", latitude, longitude);
             //********http://api.map.baidu.com/geocoder?location=24.363,109.402&output=json&key=elxrPCAh6eQyyBwqk62NGpKMxhTh1az1
@@ -50,28 +48,15 @@ namespace MMY.StickyNote.UI
             string staticAddress = "http://api.map.baidu.com/geocoder?";
             string location = String.Format("{0},{1}", latitude, longitude);
 
-            string url = String.Format("{0}location={1}&output=json&key={2}",staticAddress , location , _ak);
-            string result = Get(url);
-            AddressComponent address = AnalyticalData(result);
-            return address; 
+            string url = String.Format("{0}location={1}&output=json&key={2}", staticAddress, location, _ak);
+            string result =GenerateUrl.Get(url);
+            AddressComponent address = AnalyticalData.AnalyticalData_obj(result);
+            return address;
 
         }
-
-        public WeatherInfoData GetWeatherData( string code)
-        {
-            //***********http://www.weather.com.cn/data/cityinfo/101110101.html
-            string staticAddress = "http://www.weather.com.cn/data/cityinfo/";
-            string url = String.Format("{0}{1}.html",staticAddress, code);
-            string result = Get(url);
-            //Console.WriteLine(result);
-            GetWheatherLocalData data = JsonConvert.DeserializeObject<GetWheatherLocalData>(result);
-            //Console.WriteLine(data.weatherinfo.weather);
-            return data.weatherinfo;
-        }
-
         public string GetCityCode(AddressComponent address)
         {
-            GetWeatherCodeData data = JsonConvert.DeserializeObject<GetWeatherCodeData>(MMY.StickyNote.UI.Properties.Resources.WeatherCode);
+            WeatherCodeData data = JsonConvert.DeserializeObject<WeatherCodeData>(MMY.StickyNote.UI.Properties.Resources.WeatherCode);
             string tempGetProvince = address.province.Substring(0, 2);
             string tempGetCity = address.city.Substring(0, 2);
             string cityCode = "0";
@@ -91,39 +76,35 @@ namespace MMY.StickyNote.UI
                         }
                     }
                 }
-               
+
             }
             return cityCode;
         }
-
-        private  string Get(string url)
+       
+        public string RequestWeatherWebAnalysisData(string cityCode)
         {
-            string result = string.Empty;
-
-            using (HttpClient httpClient = new HttpClient())
+            //获取天气网址的html页面
+            IHtmlDocument source = new JumonyParser().LoadDocument($"http://www.weather.com.cn/weather1d/{cityCode}.shtml", Encoding.GetEncoding("utf-8"));
+            var input = source.Find("input[id=hidden_title]").First();//获取input标签id为hidden_title
+            var divs = source.Find("div[class=xyn-weather-box]");//查找城市所在的div
+            var span = divs.Find("h2").Find("span").First();
+            //城市名
+            string cityName = span.InnerText().Trim();
+            string weatherInfo = input.Attribute("value").Value();
+            //分割天气信息
+            string[] weatherStrs = weatherInfo.Split(' ');
+            List<string> wList = new List<string>();
+            foreach (var itemStr in weatherStrs)
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = httpClient.GetAsync(url).Result;
-                result = response.Content.ReadAsStringAsync().Result;
-            }
-            return result;
-        }
-        private  AddressComponent  AnalyticalData(string jsonData)
-        {
-            var obj = JsonConvert.DeserializeObject<GetResultData_Items>(jsonData);
-            if (obj.status == "OK")
-            {
-                AddressComponent items = obj.result.addressComponent;
-                //Console.WriteLine(items.city);
-                return items;
-            }
-            else
-            {
-                MessageBox.Show(obj.status + "**未能获取信息！", "请求异常");
-                return null;
+                if (!string.IsNullOrWhiteSpace(itemStr))
+                {
+                   wList.Add(itemStr);
+                }
             }
 
+            return $"{cityName} - {wList[2]} - {wList[3]}";
         }
 
+        
     }
 }

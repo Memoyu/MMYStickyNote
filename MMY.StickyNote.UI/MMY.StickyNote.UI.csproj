@@ -71,6 +71,18 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ivony.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ivony.Core.1.1.1\lib\Ivony.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Html, Version=3.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jumony.Core.3.0.18\lib\Ivony.Html.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Html.Parser, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jumony.Core.3.0.18\lib\Ivony.Html.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivony.Html.Parser.Regulars, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jumony.Core.3.0.18\lib\Ivony.Html.Parser.Regulars.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
@@ -98,9 +110,11 @@
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.cs" />
-    <Compile Include="Model\GetResultData_Items.cs" />
-    <Compile Include="Model\GetWeatherCodeData.cs" />
-    <Compile Include="Model\GetWheatherLocalData.cs" />
+    <Compile Include="Common\AnalyticalData.cs" />
+    <Compile Include="Common\GenerateUrl.cs" />
+    <Compile Include="Model\ResultData_Items.cs" />
+    <Compile Include="Model\WeatherCodeData.cs" />
+    <Compile Include="Model\WeatherLocalData.cs" />
     <Compile Include="NoteManager.xaml.cs">
       <DependentUpon>NoteManager.xaml</DependentUpon>
     </Compile>
@@ -132,6 +146,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

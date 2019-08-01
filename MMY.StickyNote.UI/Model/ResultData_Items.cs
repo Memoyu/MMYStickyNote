@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MMY.StickyNote.UI
 {
-    public class GetResultData_Items
+    public class ResultData_Items
     {
         public string status { get; set; }
         public Result result { get; set; }
