@@ -20,6 +20,9 @@ namespace MMY.StickyNote.UI
         public int ViewId;
         public string ViewTitle;
 
+        private static string weather = null;
+        private static DispatcherTimer readDataTimer = null;
+
 
         #region 依赖属性
         //声明依赖属性    
@@ -131,8 +134,13 @@ namespace MMY.StickyNote.UI
             LoadData(viewSettingData);
 
             StickyNoteView_MouseLeave(null , null);//调用鼠标离开事件，实现软件开启，标题栏自动隐藏
-
-
+            if (readDataTimer == null)
+            {
+                readDataTimer = new DispatcherTimer();
+                readDataTimer.Tick += new EventHandler(timeCycle);
+                readDataTimer.Interval = new TimeSpan(0, 2, 0, 0);
+                readDataTimer.Start();
+            }
         }
         //获取天气信息
         private void GetAddreaaCode(AddressComponent address)
@@ -141,16 +149,30 @@ namespace MMY.StickyNote.UI
             //根据获取到的省市获取本地相应的天气编码
             string cityCode = weatherInfo.GetCityCode(address);
             //获取天气信息
-            string weather = weatherInfo.RequestWeatherWebAnalysisData(cityCode);
-            Console.WriteLine(weather);
+            if (weather == null)
+            {
+               weather = weatherInfo.RequestWeatherWebAnalysisData(cityCode);
+            }
+            //Console.WriteLine(weather);
             //这里开始赋值窗口天气
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 this.contentWeather = weather;
             }));
         }
-
-
+        /// <summary>
+        /// 定时器调事件
+        /// </summary>
+        public void timeCycle(object sender, EventArgs e)
+        {
+            weatherInfo = new WeatherInfo();
+            weatherInfo.GetLocationEvent(GetAddreaaCode);
+            weather = null;
+        }
+        /// <summary>
+        /// 加载便签数据
+        /// </summary>
+        /// <param name="viewSettingData">便签配置数据</param>
         private void LoadData(ViewSettingData viewSettingData = null)
         {
             if (string.IsNullOrEmpty(this.StickyNoteTitle.Content.ToString()))
@@ -164,8 +186,7 @@ namespace MMY.StickyNote.UI
                 CurrentTheme = rand.Next(Window.Themes.Count - 1) + 1;
             }
             if (Window.Styles.Count > 1)
-            {
-                CurrentStyle = 1;
+            { CurrentStyle = 1;
             }
             if (viewSettingData == null)//判断是否有传入窗口显示 相关数据，空则直接显示，否则加载数据
             {

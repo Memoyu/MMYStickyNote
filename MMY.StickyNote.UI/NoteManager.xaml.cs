@@ -73,16 +73,27 @@ namespace MMY.StickyNote.UI
 
             }
             dataGrid.ItemsSource = listViewData;
-            //foreach (var item in listViewData)
-            //{
-            //    Console.WriteLine(item.id);
-            //    Console.WriteLine(item.title);
-            //    Console.WriteLine(item.isVisible);
-            //}
-            //Console.WriteLine(listViewData.Count);
         }
 
         #region 事件相关
+        /// <summary>
+        /// 重置按钮便签位置
+        /// </summary>
+        private void Btn_Reset_OnClick(object sender, RoutedEventArgs e)
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;//得到屏幕整体宽度
+            double screenHeight = SystemParameters.PrimaryScreenHeight;//得到屏幕整体高度
+
+            foreach (System.Windows.Window noteView in Application.Current.Windows)
+            {
+                Random ran = new Random(GetRandomSeed());
+                int minValue = 100;
+                if (noteView.GetType() != typeof(StickyNoteView)) continue;
+                StickyNoteView view = noteView as StickyNoteView;
+                view.Top = ran.Next(minValue, (int) screenHeight - minValue);
+                view.Left = ran.Next(minValue, (int)screenWidth - minValue);
+            }
+        }
         /// <summary>
         /// 删除选中项事件
         /// </summary>
@@ -158,6 +169,22 @@ namespace MMY.StickyNote.UI
         }
 
         #endregion
+        /// <summary>
+        /// 获取随机数种子，用于获取真随机数
+        /// </summary>
+        /// <returns>随机数种子</returns>
+        static int GetRandomSeed()
+        {
+            //字节数组，用于存储
+            byte[] bytes = new byte[4];
+            //创建加密服务，实现加密随机数生成器
+            System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            //加密数据存入字节数组
+            rng.GetBytes(bytes);
+            //转成整型数据返回，作为随机数生成种子
+            return BitConverter.ToInt32(bytes, 0);
+        }
+
     }
 
    

@@ -11,8 +11,9 @@
     </Window.Resources>
     
     <StackPanel Margin="6" >
-        <DockPanel  Height="40" DockPanel.Dock="Top">
+        <DockPanel LastChildFill="False" Height="40" DockPanel.Dock="Top">
             <Label Content="全部的便签：" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+            <Button DockPanel.Dock="Right" Name="Btn_Reset" Width="100" Height="25" Content="重置便签位置" Click="Btn_Reset_OnClick"/>
         </DockPanel>
         <DockPanel Height="350">
             <DataGrid Name="dataGrid" GridLinesVisibility="None"  CanUserAddRows="False" IsReadOnly="True" BorderThickness ="0"  AutoGenerateColumns="False" HorizontalContentAlignment="Center" ColumnWidth="*">

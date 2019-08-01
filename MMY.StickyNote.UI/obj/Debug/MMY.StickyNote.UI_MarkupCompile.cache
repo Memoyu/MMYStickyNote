@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-D:\C#\VS_Project\C#Project\StickyNoteSolution\MMY.StickyNote.UI\obj\Debug\
+D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\obj\Debug\
 MMY.StickyNote.UI
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 4292615684
 
 16-247834239
-21220953938
+21-419221903
 AboutView.xaml;NoteManager.xaml;SettingView.xaml;StickyNoteView.xaml;
 
 False

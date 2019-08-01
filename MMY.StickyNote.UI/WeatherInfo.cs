@@ -14,7 +14,6 @@ namespace MMY.StickyNote.UI
     public class WeatherInfo
     {
         GeoCoordinateWatcher watcher;
-        string _cityCode;
 
         Action<AddressComponent> _GetAddressCode;
         string _ak = "elxrPCAh6eQyyBwqk62NGpKMxhTh1az1";
@@ -76,7 +75,6 @@ namespace MMY.StickyNote.UI
                         }
                     }
                 }
-
             }
             return cityCode;
         }
