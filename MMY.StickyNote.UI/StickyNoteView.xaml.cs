@@ -115,10 +115,7 @@ namespace MMY.StickyNote.UI
             this.HideStickyNote.Click += HideStickyNote_Click;//隐藏便签
             this.Setting.Click += Setting_Click;
             this.ShowInTaskbar = false;//不再任务栏显示图标
-
             this.WindowStartupLocation = WindowStartupLocation.Manual;
-
-
         }
 
     
@@ -130,9 +127,7 @@ namespace MMY.StickyNote.UI
             CustomStyle = new Style();//创建样式
             weatherInfo = new WeatherInfo();
             weatherInfo.GetLocationEvent(GetAddreaaCode);
-
             LoadData(viewSettingData);
-
             StickyNoteView_MouseLeave(null , null);//调用鼠标离开事件，实现软件开启，标题栏自动隐藏
             if (readDataTimer == null)
             {
