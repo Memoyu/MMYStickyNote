@@ -23,22 +23,22 @@
     <DockPanel>
         <DockPanel  Name="NavBar" Height="30"  MouseMove="StickyNote_MouseMove" Opacity="{Binding ElementName=stickyNoteViewProp, Path=navBarOpacity}"  Background="{Binding ElementName=stickyNoteViewProp, Path=navBarBackground}" DockPanel.Dock="Top" LastChildFill="False">
             <Button Name="AddStickyNote"  BorderThickness="0" Background="#0000" Height="25" Width="25" DockPanel.Dock="Left">
-                <Image Source="./Image/AddStickyNote.png"/>
+                <Image Source="../Image/AddStickyNote.png"/>
             </Button>
             <!--<TextBox Name="txtTitle" Text="个人信息" Background="Black"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontFamily="微软雅黑"  Foreground="White"/>-->
             <Grid Name="TitleGrid">
                 <Label Name="StickyNoteTitle" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontFamily="微软雅黑"  Foreground="White" MouseDoubleClick="StickyNoteTitle_MouseDoubleClick" Width="0"/>
-                <TextBox Name="editTitle" Text="输入标题" Background="Black"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontFamily="微软雅黑"  Foreground="White" Visibility="Hidden"/>
+                <TextBox Name="editTitle" Text="输入标题" Background="Black"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontFamily="微软雅黑"  Foreground="White" Visibility="Hidden" PreviewKeyDown="EditTitle_OnPreviewKeyDown" />
             </Grid>
             <DockPanel Name="HideAndClosePanel"  DockPanel.Dock="Right" Background="#0000">
                 <Button Name="EditCompleted" BorderThickness="0" Background="#0000" Height="25" Width="25" Visibility="Hidden" >
-                    <Image Source="./Image/EditCompleted.png"/>
+                    <Image Source="../Image/EditCompleted.png"/>
                 </Button>
                 <Button Name="HideStickyNote" BorderThickness="0" Background="#0000" Height="25" Width="25" >
-                    <Image Source="./Image/HideStickyNote.png"/>
+                    <Image Source="../Image/HideStickyNote.png"/>
                 </Button>
                 <Button Name="Setting" BorderThickness="0" Background="#0000" Height="25" Width="25" >
-                    <Image Source="./Image/setting.png"/>
+                    <Image Source="../Image/setting.png"/>
                 </Button>
             </DockPanel>
 

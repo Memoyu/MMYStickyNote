@@ -409,7 +409,6 @@ namespace MMY.StickyNote.UI
                     try
                     {
                         this.DragMove();//实现
-
                     }
                     catch
                     {
@@ -420,11 +419,21 @@ namespace MMY.StickyNote.UI
         /// <summary>
         /// 标题栏双击事件
         /// </summary>
-        private void StickyNoteTitle_MouseDoubleClick(object sender, System.Windows.Input.MouseEventArgs e)
+        private void StickyNoteTitle_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.EditCompleted.Visibility = Visibility.Visible;//显示控件
             this.editTitle.Text = this.StickyNoteTitle.Content.ToString();
             this.editTitle.Visibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// 输入标题框回车事件
+        /// </summary>
+        private void EditTitle_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                EditCompleted_Click(null , null);
+            }
         }
 
     } 

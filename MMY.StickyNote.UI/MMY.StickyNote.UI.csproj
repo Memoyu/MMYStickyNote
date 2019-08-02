@@ -106,7 +106,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutView.xaml.cs">
+    <Compile Include="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.cs" />
@@ -115,18 +115,18 @@
     <Compile Include="Model\ResultData_Items.cs" />
     <Compile Include="Model\WeatherCodeData.cs" />
     <Compile Include="Model\WeatherLocalData.cs" />
-    <Compile Include="NoteManager.xaml.cs">
+    <Compile Include="View\NoteManager.xaml.cs">
       <DependentUpon>NoteManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="REGISTRY.cs" />
-    <Compile Include="ViewSettingData.cs" />
-    <Compile Include="SettingView.xaml.cs">
+    <Compile Include="Process\REGISTRY.cs" />
+    <Compile Include="Process\ViewSettingData.cs" />
+    <Compile Include="View\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StickyNoteView.xaml.cs">
+    <Compile Include="View\StickyNoteView.xaml.cs">
       <DependentUpon>StickyNoteView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WeatherInfo.cs" />
+    <Compile Include="Process\WeatherInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -156,25 +156,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AboutView.xaml">
+    <Page Include="View\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NoteManager.xaml">
+    <Page Include="View\NoteManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingView.xaml">
+    <Page Include="View\SettingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StickyNoteView.xaml">
+    <Page Include="View\StickyNoteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\StickyNoteIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\AddStickyNote.png" />
