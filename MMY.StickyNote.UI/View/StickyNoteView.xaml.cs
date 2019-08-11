@@ -20,9 +20,6 @@ namespace MMY.StickyNote.UI
         public int ViewId;
         public string ViewTitle;
 
-        private static string weather = null;
-        private static DispatcherTimer readDataTimer = null;
-
 
         #region 依赖属性
         //声明依赖属性    
@@ -125,44 +122,9 @@ namespace MMY.StickyNote.UI
             ViewId = viewId;//赋值全局Id
             CustomTheme = new Theme();//创建主题
             CustomStyle = new Style();//创建样式
-            weatherInfo = new WeatherInfo();
-            weatherInfo.GetLocationEvent(GetAddreaaCode);
             LoadData(viewSettingData);
             StickyNoteView_MouseLeave(null , null);//调用鼠标离开事件，实现软件开启，标题栏自动隐藏
-            if (readDataTimer == null)
-            {
-                readDataTimer = new DispatcherTimer();
-                readDataTimer.Tick += new EventHandler(timeCycle);
-                readDataTimer.Interval = new TimeSpan(0, 2, 0, 0);
-                readDataTimer.Start();
-            }
-        }
-        //获取天气信息
-        private void GetAddreaaCode(AddressComponent address)
-        {
-            if (address == null) return;
-            //根据获取到的省市获取本地相应的天气编码
-            string cityCode = weatherInfo.GetCityCode(address);
-            //获取天气信息
-            if (weather == null)
-            {
-               weather = weatherInfo.RequestWeatherWebAnalysisData(cityCode);
-            }
-            //Console.WriteLine(weather);
-            //这里开始赋值窗口天气
-            this.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                this.contentWeather = weather;
-            }));
-        }
-        /// <summary>
-        /// 定时器调事件
-        /// </summary>
-        public void timeCycle(object sender, EventArgs e)
-        {
-            weatherInfo = new WeatherInfo();
-            weatherInfo.GetLocationEvent(GetAddreaaCode);
-            weather = null;
+           
         }
         /// <summary>
         /// 加载便签数据

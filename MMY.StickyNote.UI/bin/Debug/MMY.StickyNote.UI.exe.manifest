@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MMY.StickyNote.UI.exe" size="162304">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MMY.StickyNote.UI.exe" size="163328">
       <assemblyIdentity name="MMY.StickyNote.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TWQerXR9b56cE4VGxnA48muno2G0WuDQnoa0MXUtsMc=</dsig:DigestValue>
+        <dsig:DigestValue>YY7vNzr6pH8yI2PrN4W1D0m0HdsEufA9CuNy8JjveIw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

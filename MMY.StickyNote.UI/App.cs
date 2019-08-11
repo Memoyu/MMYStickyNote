@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -27,6 +28,8 @@ namespace MMY.StickyNote.UI
         static  System.Windows.Forms.NotifyIcon _notifyIcon;//托盘
         static List<System.Windows.Forms.MenuItem> menuItems = new List<System.Windows.Forms.MenuItem>();//托盘右键菜单选项
 
+        private static WeatherInfo weatherInfo;
+        private static Timer readDataTimer = null;
 
         [STAThread]
         static void Main()
@@ -34,6 +37,10 @@ namespace MMY.StickyNote.UI
         {
             // 定义Application对象作为整个应用程序入口  
             Application app = new Application();
+
+            weatherInfo = new WeatherInfo();//开始获取天气信息
+            weatherInfo.GetLocationEvent(SetWeatherControl);
+
 
             InitialTary();
             EmptySlots = new Queue<int>();
@@ -50,7 +57,33 @@ namespace MMY.StickyNote.UI
             if (REGISTRY.FirstRun) REGISTRY.StartWithWindows = true;//*******************************注册表启动项***************************
 
         }
+        //获取天气信息
+        private static void SetWeatherControl(string weatherInfo)
+        {
+            //赋值便签页面的天气控件
+            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                AssignmentWeatherControl(weatherInfo);
+            }));
+            if (readDataTimer == null)
+            {
+                readDataTimer = new Timer();
+                readDataTimer.Interval = 7200000;//两个小时定时器调用一次
+                readDataTimer.Elapsed += TimeCycle;
+                readDataTimer.Enabled = true;
+            }
 
+        }
+        /// <summary>
+        /// 定时器调事件
+        /// </summary>
+        public static void TimeCycle(object sender, EventArgs e)
+        {
+            weatherInfo = new WeatherInfo();
+            weatherInfo.GetLocationEvent(SetWeatherControl);
+            //
+            //.WriteLine("定时调用");
+        }
         /// <summary>
         /// 加载所有的便签页面
         /// </summary>
@@ -124,16 +157,8 @@ namespace MMY.StickyNote.UI
 
                 Styles.Add(st);
             }
-            Console.WriteLine(Styles.Count);
+           // Console.WriteLine(Styles.Count);
         }
-
-
-
-
-
-
-
-
 
         /// <summary>
         /// 创建系统托盘
@@ -158,6 +183,8 @@ namespace MMY.StickyNote.UI
             CreateMenuItem("隐藏全部", HideAllNote_Click);
             ////便签管理
             CreateMenuItem("便签管理", NoteManager_Click);
+            ////刷新天气
+            CreateMenuItem("刷新天气", RefeshWeather_Click);
             ////关于
             CreateMenuItem("关于", About_Click);
             ////退出菜单项
@@ -221,10 +248,19 @@ namespace MMY.StickyNote.UI
                 window.Show();
             }
         }
-
+        /// <summary>
+        /// 新建便签
+        /// </summary>
         public static void NewNote_Click(object sender, EventArgs e)
         {
             AddNewStickyNoteView();
+        }
+        /// <summary>
+        /// 刷新显示天气
+        /// </summary>
+        private static void RefeshWeather_Click(object sender, EventArgs e)
+        {
+            TimeCycle(null, null);
         }
         #endregion
 
@@ -263,6 +299,23 @@ namespace MMY.StickyNote.UI
             NoteManager noteManager = NoteManager.GetInstance();
             noteManager.Focus();
             noteManager.Show();
+        }
+        /// <summary>
+        /// 赋值所有便签窗口天气信息
+        /// </summary>
+        /// <param name="weatherInfo">天气信息字符串</param>
+        private static void AssignmentWeatherControl(string weatherInfo)
+        {
+            foreach (System.Windows.Window window in Application.Current.Windows)//遍历全部已创建的标签
+            {
+                if (window.GetType() != typeof(StickyNoteView)) continue;//判断标签类型，是否一致，否则结束当前循环
+                StickyNoteView noteView = window as StickyNoteView;
+                noteView.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    noteView.contentWeather = weatherInfo;
+                }));
+
+            }
         }
     }
 }
