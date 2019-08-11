@@ -35,12 +35,15 @@ namespace MMY.StickyNote.UI
         {
 
             AddressComponent address = GetGeocoderForPositionByBaidu(e.Position.Location.Latitude, e.Position.Location.Longitude);
+
             if (address == null) return;
             //获取城市编码
             string cityCode = GetCityCode(address);
             //使用委托的方式回传地址信息回去，再执行获取天气信息
             string weatherStr = RequestWeatherWebAnalysisData(cityCode);
             _SetWeatherControl(weatherStr);
+
+            watcher.PositionChanged -= watcher_PositionChanged;//关闭位置获取
 
         }
 
@@ -58,6 +61,7 @@ namespace MMY.StickyNote.UI
             {
                 string result = GenerateUrl.Get(url);
                 AddressComponent address = AnalyticalData.AnalyticalData_obj(result);
+                Console.WriteLine("百度请求");
                 return address;
             }
             catch (Exception ex)

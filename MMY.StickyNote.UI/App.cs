@@ -68,9 +68,10 @@ namespace MMY.StickyNote.UI
             if (readDataTimer == null)
             {
                 readDataTimer = new Timer();
-                readDataTimer.Interval = 7200000;//两个小时定时器调用一次
+                readDataTimer.Interval = 7200000;//7200000两个小时定时器调用一次
                 readDataTimer.Elapsed += TimeCycle;
                 readDataTimer.Enabled = true;
+
             }
 
         }
@@ -82,7 +83,7 @@ namespace MMY.StickyNote.UI
             weatherInfo = new WeatherInfo();
             weatherInfo.GetLocationEvent(SetWeatherControl);
             //
-            //.WriteLine("定时调用");
+            //Console.WriteLine("定时调用");
         }
         /// <summary>
         /// 加载所有的便签页面

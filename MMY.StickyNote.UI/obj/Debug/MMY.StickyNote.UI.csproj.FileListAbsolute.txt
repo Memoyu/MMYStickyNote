@@ -76,7 +76,6 @@ D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\bin\D
 D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\bin\Debug\Ivony.Html.Parser.xml
 D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\bin\Debug\Newtonsoft.Json.pdb
 D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\bin\Debug\Newtonsoft.Json.xml
-D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI.csprojAssemblyReference.cache
 D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI_MarkupCompile.cache
 D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI_MarkupCompile.lref
 D:\VS_Project\C#Project\StickyNoteSolution\MMYStickyNote\MMY.StickyNote.UI\obj\Debug\MMY.StickyNote.UI.g.resources
